@@ -81,3 +81,4 @@ Free particle: spreading, drift
 Potential step: reflection/transmission validated, threshold discrepancy explained via momentum-space spread
 Finite barrier: real tunnelling measured, T vs E sweep showing exponential-sensitivity effects
 Bound state: quantized energy levels validated to 4 decimal places, node structure visualized, directly bridging to qubit anharmonicity
+

@@ -32,7 +32,28 @@ J Z_1 Z_2 is an interaction term that couples the two qubits, and h(X_1 + X_2) i
     S = -Tr(rho1 log2 rho1)
     - rho1 is qubit 1's reduced density matrix (obtained by tracing out qubit2)
 
-## Transmon
+## transmon = "transmission-line shunted plasma oscillation qubit
 a transmon is the specific circuit design used by IBM, Google, and most superconducting qubit companies
 - a nonlinear LC oscillator, where an inductor is replaced by a Josephson junction (a thin insulating barrier between two superconductors) to give V(phi) = -E_J cos(phi) instead of pure harmonic 1/2ω^2x^2
 - near phi=0, cos(phi) approximation -> harmonic like at the bottom but phi^4 correction makes energy levels unevenly spaced (anharmonic), letting us address the 0 -> 1 transition with a specific drive frquency without also accidentally exciting 1 -> 2. 
+
+transmon hamiltonian: H = 3 E_C nhat^2 - E_J cos(phi hat)
+where nhat = - i d/dphi, the charge number operator
+E_C, the charging energy; E_J the josephson energy
+
+Lowest 4 eigenvalues: [-40.25679248 -21.31492341  -3.52110135  12.98603842]
+E1-E0 = 18.9419   (harmonic approx: sqrt(8*E_C*E_J) = 20.0000)
+E2-E1 = 17.7938
+Anharmonicity (E2-E1)-(E1-E0) = -1.1480   (analytic approx: -E_C = -1.0000)
+saved
+
+this matters because:
+we started with a pure harmonic oscillator, showing perfectly even energy spacing, now we show that erplacing the harmonic potential with the actual physical potential used in real superconducting qubits introduces a small, specific, analytically-predictable anharmonicity, the design feature that makes transmons usable two-level systems
+because the ladder is no longer even energy spacing betwen E1-E0 and E2-E1, driving at one frequency to control a qubit is off resonance for the other transitions, surpressing them and getting a clean two level system
+but if E_J/E_C is too small, weak anharmonicity, transitions blur together and you get leakage, but if is too big, the system becomes highly sensitive to charge noise, random fluctuating electric fields shifting the qubit frequency unpredictably. EJ/EC ~50/100 is used in real transmons as a sweet spot
+
+## rabi oscillations
+H(t) = 1/2 ω0​ Z + Ωcos(ωt)X
+ω0 qubit natural frequency (from transmon calculation E1-E0=18.94)
+Ωcos(ωt)X is a microwave pulse, representing literal microwave radiation applied to the physical qubit chip, how IBM/Google apply single-qubit gates
+when ω=ω0 on resonance, you get rabi oscillations, the qubit coherently swaps between ∣0⟩ and ∣1⟩. A pi-pulse, pulse lasting exactly half a rabi period, is how an X-gate is physically implement on real hardware

@@ -1,4 +1,5 @@
 import numpy as np
+from scipy.linalg import eigh_tridiagonal
 
 def make_grids(N, L):
     dx = L / N #spacing between neighbouring points
@@ -87,3 +88,13 @@ def theoretical_barrier_T(E, V0, a):
 
 def make_double_well_potential(x, V0, a):
     return V0 * (x**2/a**2 - 1)**2
+
+def transmon_energy_levels(E_C, E_J, N=2048, n_levels=4):
+    """Diagonalize the transmon Hamiltonian, return lowest n_levels eigenvalues."""
+    phi = np.linspace(-np.pi, np.pi, N)
+    dphi = phi[1] - phi[0]
+    V = -E_J * np.cos(phi)
+    diag = 4*E_C * 2/dphi**2 + V
+    offdiag = -4*E_C/dphi**2 * np.ones(N-1)
+    eigenvalues, eigenvectors = eigh_tridiagonal(diag, offdiag, select='i', select_range=(0, n_levels-1))
+    return eigenvalues, eigenvectors, phi, dphi
