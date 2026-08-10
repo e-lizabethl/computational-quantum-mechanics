@@ -1,3 +1,5 @@
+part3.md
+
 ## Troterrisation 
 we want to implement e^-iHt, the time evolution operator, as an actual quantum circuit -> need to decompose it
 
@@ -32,6 +34,7 @@ J Z_1 Z_2 is an interaction term that couples the two qubits, and h(X_1 + X_2) i
     S = -Tr(rho1 log2 rho1)
     - rho1 is qubit 1's reduced density matrix (obtained by tracing out qubit2)
 
+
 ## transmon = "transmission-line shunted plasma oscillation qubit
 a transmon is the specific circuit design used by IBM, Google, and most superconducting qubit companies
 - a nonlinear LC oscillator, where an inductor is replaced by a Josephson junction (a thin insulating barrier between two superconductors) to give V(phi) = -E_J cos(phi) instead of pure harmonic 1/2ω^2x^2
@@ -57,3 +60,41 @@ H(t) = 1/2 ω0​ Z + Ωcos(ωt)X
 ω0 qubit natural frequency (from transmon calculation E1-E0=18.94)
 Ωcos(ωt)X is a microwave pulse, representing literal microwave radiation applied to the physical qubit chip, how IBM/Google apply single-qubit gates
 when ω=ω0 on resonance, you get rabi oscillations, the qubit coherently swaps between ∣0⟩ and ∣1⟩. A pi-pulse, pulse lasting exactly half a rabi period, is how an X-gate is physically implement on real hardware
+
+## T1/T2 theory
+what happens on real hardware
+
+- why unitary evolution isn't the whole story
+    - so far every simulation has assumed the qubit/particle is perfectly isolated. in reality a physical qubit sits on a chip surrounded by other circuitry, held at a finite temperature, coupled to countless external degree of freedom (phonons, stray photons, nearby defects) -> not truly a closed system, constantly leaking tiny amounts of information into/receiving random kicks from its environment
+    -> fundamental fact of any real physical system
+- pure state becomes a density matrix (2 x 2 matrix encoding both populations (diagonal) and coherences (off diagonal))
+    - rho = rho_00 rho_01
+            rho_10 rho_11
+    - rho_11 is the probability of measuring ∣1⟩ (same Born rule as before)
+    - rho_01 and rho_10 is the coherence, captures the phase relationship between ∣0⟩ and ∣1⟩
+
+- the Lindblad master equation for an open quantum system
+
+T1: energy relaxation
+    - T1 is the timescale of the decay of the qubit spontaneously going from 1 -> 0 and emiting energy. Lowering operator L1. 
+T2: dephasing
+
+"energy relaxation iteself also destroys coherence"
+    - if you don't know when the decay happened, you've lost phase information too
+-> so T2 is bounded by T1
+
+1/T2 = 1/2T1 + 1/T2*
+
+T2* is the additional, pure dephasing contribution 
+
+- current superconducting qubits (IBM, Google) report T1 and T2 typically in the tens to low hundreds of microseconds, while a single gate operation takes roughly tens of nanoseconds
+- so you get roughly 1000-10000 gates before decoherence becomes a serious problem -> therefore quantum error correction exists
+
+- i will take a single qubit but this tim elet it evolve under the lindblad equation instead of a plain unitary circuit. i will track how much is left in ∣1⟩ (population rho_11(t)) and how much quantumness/superposition character is left |rho(01(t))|
+- to quantify how quickly 'quantumness' (coherence) disappears
+
+once you have a real T1 and T2 you can directly compare it against your Rabi gate time and if T1,T2 >> 4.37, then your qubit survives comfortably many gate operations before decohering. if comparable, then youd be at the edge of usability
+
+how many gates could I actually perform on this system before it stops being quantum?
+
+

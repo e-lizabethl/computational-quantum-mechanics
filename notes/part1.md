@@ -1,3 +1,5 @@
+part1.md
+
 split step fourier method, standard efficient solver for the time-dependent schrodinger equation
 - built spatial and momentum grids
 - consructed initial gaussian wavepacket, parameterised by center position, width, and initial momentum

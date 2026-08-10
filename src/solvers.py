@@ -90,7 +90,9 @@ def make_double_well_potential(x, V0, a):
     return V0 * (x**2/a**2 - 1)**2
 
 def transmon_energy_levels(E_C, E_J, N=2048, n_levels=4):
-    """Diagonalize the transmon Hamiltonian, return lowest n_levels eigenvalues."""
+    """
+    Diagonalize the transmon Hamiltonian, return lowest n_levels eigenvalues.
+    """
     phi = np.linspace(-np.pi, np.pi, N)
     dphi = phi[1] - phi[0]
     V = -E_J * np.cos(phi)

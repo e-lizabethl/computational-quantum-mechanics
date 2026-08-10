@@ -1,3 +1,17 @@
+plan.md
+
+classical split-step solver and quantum computer are running the same algorithm
+- why? where does the analogy stop?
+
+1. time evolution is applying e^-Ht to a state
+    In your solver, the state is a wavefunction sampled on a grid and H is the kinetic-plus-potential operator. On a quantum computer, the state is a register of qubits and H is built from Pauli operators
+2. trotterisation
+    can't apply exp(-i(T+V)t) directly as T and V don't commute so you split it. a quantum algorithm uses this approximation
+3. fourier
+    FFT and QFT are same idea but one on amplitudes the other on qubit phases
+4. where does this break?
+    exponential compression (a grid of N points becomes log2(N) qubits)
+
 Part 1 — Continuous QM simulation (the core, most time invested here): Numerical solution of the time-dependent Schrödinger equation. Four scenarios: free Gaussian wavepacket (spreading, phase evolution), potential step (reflection/transmission), finite barrier tunnelling (transmission coefficient vs energy and width), bound state potential (particle in a box or harmonic oscillator, showing quantisation). Physics is familiar from Year 2, the actual learning is numerical: discretisation, solver choice, boundary handling, extracting clean physical quantities from a wavefunction array.
 Part 2 — Qiskit extension (deliberately kept light, now via QGSS rather than self-taught): basic qubit states, superposition, entanglement, measurement statistics. Small, contained, not a software engineering exercise. Certificate secured today, core concepts to be consolidated with me directly given the lab/badge situation.
 Part 3 — Interpretation and comparison (the most original, most "you" section): relating the continuous wavefunction picture to the discrete circuit picture, what's physically the same, what's just representation.
