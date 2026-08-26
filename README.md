@@ -44,6 +44,10 @@ with no single-particle analogue in Part 1.
 - **Trotterisation**: e^{-iHt} approximated as a quantum circuit for both 
   a single qubit and a two-qubit interacting system, validated against 
   exact matrix exponentiation
+- **Symmetric vs asymmetric splitting**: despite theory favouring the 
+  symmetric method Part 1 uses, it showed no measurable advantage on a 
+  circuit, and its extra gate cost would make it worse in practice on 
+  real, noisy hardware
 - **Entanglement growth**: two initially unentangled qubits become 
   entangled purely through Hamiltonian evolution
 
@@ -80,5 +84,6 @@ Qiskit Global Summer School 2026, IBM Quantum — Certificate of Completion
 Python, NumPy, SciPy, Matplotlib, Qiskit, Qiskit Aer
 
 ## Full writeup
-
-A more detailed technical writeup is available in [`writeup/writeup.md`](writeup/writeup.md).
+A complete technical writeup, covering the physics, derivations, and 
+honest limitations of every result above, is available in 
+[`writeup/writeup.md`](writeup/writeup.md).

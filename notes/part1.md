@@ -1,4 +1,4 @@
-part1.md
+## Part 1 Notes
 
 split step fourier method, standard efficient solver for the time-dependent schrodinger equation
 - built spatial and momentum grids
@@ -18,7 +18,7 @@ units conversion, set hbar =1 and m=1, standard for numerical qm simulations
     - animated, in figures
 
 ## 2. potential step
-- since we are using a wavepacket (superposition of many momentums) an dnot a plane wave, we see:
+- since we are using a wavepacket (superposition of many momentums) and not a plane wave, we see:
     - part of packet reflects backwards
     - part transmits forward, if E > V0 then this is slower as KE reduced
     - E is not sharply defined (since its a spread of momenta)so should see partial reflection and transmission simultaneously, splitting into two visible packets
@@ -36,7 +36,6 @@ units conversion, set hbar =1 and m=1, standard for numerical qm simulations
 ## 3. tunnelling through a finite barrier
 - classically forbidden, derivation standard result
 - Numerical:   R = 0.9950, T = 0.0050
-- can't tell on animation so zoomed in + log scale
 - want to extract transmission coefficient as a function of energy and barrier width (T vs E curve)
     - at low energies well below V0, T is orders of magnitude larger than plane-wave theory predicts
         - tunnelling probability depends exponentially on energy (T ~ exp(-2sqrt(2(v0-E)a))) so even a small high=energy tail in the wavepacket momentum disribution contributes disproportionately to the average transmission

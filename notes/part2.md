@@ -1,8 +1,8 @@
-part2.md
+## Part 2 Notes
 
 ## What is a qubit?
 what you get when you take a real physical system of ladder of levels (engineered to be anharmonic in practice) and deliberately restrict attention to just E0 and E1, the two lowest levels. 
-everything above is assume inaccessible (either you never drive the system hard enough to reach it, or anharmonicity makes those transiitions require different energy tha the one youre using)
+everything above is assume inaccessible (either you never drive the system hard enough to reach it, or anharmonicity makes those transiitions require different energy than the one youre using)
 -> a qubit is a truncation of the system
 
 we can therefore write them as two component vectors (as column vectors)

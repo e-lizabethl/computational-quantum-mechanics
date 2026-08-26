@@ -1,4 +1,4 @@
-things i didnt want to delete when i was replacing the markdowns in notebooks
+## Random notes/conclusions
 
 trotter:
 a fully general quantum simulation of just ~266 qubits would require more classical bits of memory than there are atoms in the observable universe to even store the state vector, let alone compute with it. Real quantum processors already have 100+ qubits (IBM's Nighthawk: 120, Google's Willow: 105), meaning we're already in a regime where no classical computer, even in principle, could store the full state vector these devices operate on

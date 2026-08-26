@@ -1,4 +1,4 @@
-part3.md
+## Part 3 notes
 
 ## Troterrisation 
 we want to implement e^-iHt, the time evolution operator, as an actual quantum circuit -> need to decompose it
@@ -79,7 +79,7 @@ T1: energy relaxation
     - T1 is the timescale of the decay of the qubit spontaneously going from 1 -> 0 and emiting energy. Lowering operator L1. 
 T2: dephasing
 
-"energy relaxation iteself also destroys coherence"
+"energy relaxation itself also destroys coherence"
     - if you don't know when the decay happened, you've lost phase information too
 -> so T2 is bounded by T1
 

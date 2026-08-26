@@ -1,4 +1,4 @@
-plan.md
+## Plan notes
 
 classical split-step solver and quantum computer are running the same algorithm
 - why? where does the analogy stop?
