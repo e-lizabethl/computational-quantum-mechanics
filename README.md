@@ -7,6 +7,10 @@ a single guiding question: a classical numerical solver and a quantum
 circuit can both simulate the same physical system, where does that 
 analogy hold, and where does it break?
 
+## Setup
+Requires Python 3.11+ with numpy, scipy, matplotlib, and qiskit installed.
+pip install numpy scipy matplotlib qiskit qiskit-aer
+
 ## Structure
 
 - **`src/`** — Part 1: numerical solutions of the time-dependent and 
